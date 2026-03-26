@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Agendamento Confirmado — Pet Drive Sinal</title>
+<meta name="description" content="Seu agendamento foi confirmado. Pet Drive Sinal — Grupo Sinal + GAC + Zazuu." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: #280e0e; color: #2C2416; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+:root {
+  --green: #000000;
+  --green-light: #333333;
+  --green-pale: #f3d8d8;
+  --cream: #FAF6F1;
+  --text: #2C2416;
+  --text-muted: #7A6E5E;
+  --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
+  --dgreen: #000000;
+  --accent: #670000;
+}
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+@keyframes popIn { 0% { transform:scale(0); opacity:0; } 60% { transform:scale(1.15); } 100% { transform:scale(1); opacity:1; } }
+@keyframes checkDraw { to { stroke-dashoffset: 0; } }
+@keyframes confetti1 { 0% { transform:translateY(0) rotate(0); opacity:1; } 100% { transform:translateY(-80px) translateX(30px) rotate(200deg); opacity:0; } }
+@keyframes confetti2 { 0% { transform:translateY(0) rotate(0); opacity:1; } 100% { transform:translateY(-70px) translateX(-25px) rotate(-180deg); opacity:0; } }
+@keyframes confetti3 { 0% { transform:translateY(0) rotate(0); opacity:1; } 100% { transform:translateY(-90px) translateX(15px) rotate(160deg); opacity:0; } }
+@keyframes confetti4 { 0% { transform:translateY(0) rotate(0); opacity:1; } 100% { transform:translateY(-60px) translateX(-35px) rotate(-140deg); opacity:0; } }
+
+.fade-up { animation: fadeUp 0.8s ease-out forwards; opacity: 0; }
+
+/* ═══ HEADER ═══ */
+.site-header {
+  background: var(--dgreen);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+.site-header img { height: 40px; width: auto; display: block; }
+.site-header picture { display: flex; align-items: center; justify-content: center; }
+
+/* ═══ MAIN ═══ */
+.confirm-page {
+  min-height: calc(100vh - 72px);
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+}
+
+/* ═══ CHECK ANIMATION ═══ */
+.check-wrap {
+  position: relative;
+  margin-bottom: 28px;
+}
+.check-circle {
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+  box-shadow: 0 8px 32px rgba(103,0,0,0.3);
+}
+.check-circle svg {
+  width: 40px; height: 40px;
+  stroke: #fff;
+  stroke-width: 3;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: checkDraw 0.5s ease forwards;
+  animation-delay: 0.7s;
+}
+.confetti {
+  position: absolute;
+  width: 8px; height: 8px;
+  border-radius: 2px;
+  top: 50%; left: 50%;
+  margin: -4px 0 0 -4px;
+  opacity: 0;
+}
+.confetti:nth-child(2) { background: #670000; animation: confetti1 0.8s ease-out forwards; animation-delay: 0.75s; }
+.confetti:nth-child(3) { background: #f3d8d8; animation: confetti2 0.8s ease-out forwards; animation-delay: 0.8s; }
+.confetti:nth-child(4) { background: #541414; animation: confetti3 0.8s ease-out forwards; animation-delay: 0.85s; width: 6px; height: 6px; border-radius: 50%; }
+.confetti:nth-child(5) { background: #000000; animation: confetti4 0.8s ease-out forwards; animation-delay: 0.9s; width: 10px; height: 5px; }
+.confetti:nth-child(6) { background: #f3d8d8; animation: confetti1 0.7s ease-out forwards; animation-delay: 0.95s; width: 5px; height: 5px; border-radius: 50%; }
+
+/* ═══ CARD ═══ */
+.confirm-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 44px 40px;
+  box-shadow: var(--shadow-lg);
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+}
+.confirm-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 700;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+.confirm-subtitle {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+.confirm-subtitle strong { color: var(--text); }
+
+/* ═══ DETAILS ═══ */
+.detail-box {
+  background: var(--cream);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid #E8E0D6;
+}
+.detail-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 0;
+}
+.detail-row + .detail-row {
+  border-top: 1px solid #E8E0D6;
+}
+.detail-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+.detail-content { text-align: left; }
+.detail-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+.detail-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+}
+.detail-value.big {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ═══ REMINDER ═══ */
+.reminder {
+  background: rgba(103,0,0,0.05);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: left;
+}
+.reminder-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.reminder-text {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.reminder-text strong { color: var(--green); }
+
+/* ═══ BUTTON ═══ */
+.btn-primary {
+  width: 100%;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 14px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn-primary:hover {
+  background: #4a0000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(103,0,0,0.3);
+}
+
+/* ═══ FOOTER ═══ */
+.footer { background: var(--dgreen); padding: 32px 24px; text-align: center; }
+.footer-brand { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
+.footer-sub { font-size: 12px; color: rgba(255,255,255,0.5); }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 768px) {
+  .site-header { padding: 12px 16px; }
+  .site-header img { height: 28px; }
+  .confirm-page { padding: 32px 16px; min-height: calc(100vh - 52px); }
+  .confirm-card { padding: 32px 24px; }
+  .check-circle { width: 72px; height: 72px; }
+  .check-circle svg { width: 32px; height: 32px; }
+  .detail-value.big { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.2/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+const PORTE_LABELS = { pequeno: "Pequeno (até 10kg)", medio: "Médio (10kg–25kg)", grande: "Grande (acima de 25kg)" };
+
+function App() {
+  const [data, setData] = useState(null);
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search);
+    const nome = p.get('nome');
+    if (!nome) { window.location.href = 'index.html'; return; }
+    setData({
+      nome: p.get('nome') || '',
+      loja: p.get('loja') || '',
+      endereco: p.get('endereco') || '',
+      horario: p.get('horario') || '',
+      porte: p.get('porte') || '',
+      phone: p.get('phone') || '',
+    });
+  }, []);
+
+  const handleDownload = async () => {
+    if (!cardRef.current) return;
+    const btn = document.getElementById('download-btn');
+    btn.textContent = 'Gerando...';
+    btn.style.pointerEvents = 'none';
+    btn.style.opacity = '0.7';
+    try {
+      const card = cardRef.current;
+      card.classList.remove('fade-up');
+      card.style.opacity = '1';
+      card.style.transform = 'none';
+      card.style.animation = 'none';
+      await new Promise(r => setTimeout(r, 50));
+      const canvas = await html2canvas(card, {
+        scale: 2,
+        backgroundColor: '#FAF6F1',
+        useCORS: true,
+        logging: false,
+      });
+      card.classList.add('fade-up');
+      card.style.opacity = '';
+      card.style.transform = '';
+      card.style.animation = '';
+      const link = document.createElement('a');
+      link.download = 'comprovante-pet-drive-sinal.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    } catch(e) { console.error(e); }
+    btn.innerHTML = '📥&nbsp;&nbsp;Baixar Comprovante';
+    btn.style.pointerEvents = '';
+    btn.style.opacity = '';
+  };
+
+  if (!data) return null;
+
+  return (
+    <React.Fragment>
+      <header className="site-header">
+        <picture>
+          <source media="(max-width: 768px)" srcSet="img/logo-mobile.png" />
+          <img src="img/logo.png" alt="Pet Drive Sinal" />
+        </picture>
+      </header>
+
+      <main className="confirm-page">
+        <div className="check-wrap">
+          <div className="check-circle">
+            <svg viewBox="0 0 24 24"><polyline points="6 12 10 16 18 8" /></svg>
+          </div>
+          <div className="confetti" />
+          <div className="confetti" />
+          <div className="confetti" />
+          <div className="confetti" />
+          <div className="confetti" />
+        </div>
+
+        <div className="confirm-card fade-up" style={{animationDelay:'0.3s'}} ref={cardRef}>
+          <h1 className="confirm-title">Agendamento Confirmado!</h1>
+          <p className="confirm-subtitle">
+            <strong>{data.nome}</strong>, seu banho pet está agendado. Confira os detalhes abaixo:
+          </p>
+
+          <div className="detail-box">
+            <div className="detail-row">
+              <div className="detail-icon">🕐</div>
+              <div className="detail-content">
+                <div className="detail-label">Horário do banho</div>
+                <div className="detail-value big">{data.horario}</div>
+                <div style={{fontSize:'13px',color:'var(--text-muted)',marginTop:'2px'}}>Sábado, 28 de Março de 2026</div>
+              </div>
+            </div>
+            <div className="detail-row">
+              <div className="detail-icon">📍</div>
+              <div className="detail-content">
+                <div className="detail-label">Concessionária</div>
+                <div className="detail-value">{data.loja}</div>
+                <div style={{fontSize:'12px',color:'var(--text-muted)',marginTop:'2px'}}>{data.endereco}</div>
+              </div>
+            </div>
+            <div className="detail-row">
+              <div className="detail-icon">🐾</div>
+              <div className="detail-content">
+                <div className="detail-label">Porte do cão</div>
+                <div className="detail-value">{PORTE_LABELS[data.porte] || data.porte}</div>
+              </div>
+            </div>
+            {data.phone && (
+              <div className="detail-row">
+                <div className="detail-icon">📞</div>
+                <div className="detail-content">
+                  <div className="detail-label">Telefone da loja</div>
+                  <div className="detail-value">{data.phone}</div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="reminder">
+            <div className="reminder-icon">💡</div>
+            <div className="reminder-text">
+              <strong>Lembre-se:</strong> realize o test-drive GAC na concessionária para garantir o banho gratuito do seu pet com a equipe Zazuu.
+            </div>
+          </div>
+        </div>
+
+        <button className="btn-primary fade-up" style={{animationDelay:'0.5s',maxWidth:'520px',width:'100%',marginTop:'20px'}} onClick={handleDownload} id="download-btn">
+          📥&nbsp;&nbsp;Baixar Comprovante
+        </button>
+      </main>
+
+      <footer className="footer">
+        <div className="footer-brand">Pet Drive Sinal</div>
+        <p className="footer-sub">Uma ação Grupo Sinal × GAC × Zazuu</p>
+      </footer>
+    </React.Fragment>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
